@@ -1,0 +1,358 @@
+ :root {
+     /* colors */
+     --black: #3e3e3e;
+     --white: #ffffff;
+     --baseBg: #e6e6e6;
+     --blue: #058aad;
+     --lightBlue: #dbf3fa;
+
+     /* Animation */
+     --transition: all 0.3s ease-in;
+
+     /* font name */
+     --roboto: "Roboto", sans-serif;
+     --borderGap: 20px;
+ }
+
+ .d_f {
+     display: -webkit-flex;
+     display: -moz-flex;
+     display: -ms-flex;
+     display: -o-flex;
+     display: inline-flex;
+ }
+
+ .treeContainer {
+     width: 100%;
+     position: relative;
+     padding: 50px;
+     z-index: 0;
+ }
+
+ ._treeRoot {
+     width: 100%;
+     position: relative;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     align-content: space-between;
+     z-index: 0;
+ }
+
+ ._treeBranch {
+     width: auto;
+     height: min-content;
+     position: relative;
+     min-height: 20px;
+     z-index: 0;
+ }
+
+ ._treeRaw {
+     position: relative;
+     width: 100%;
+     z-index: 0;
+ }
+
+ ._treeRaw.active,
+ ._treeRoot.active {
+     z-index: 10;
+ }
+
+ ._treeLeaf {
+     position: relative;
+     width: 100%;
+     justify-content: center;
+     align-items: space-between;
+     padding-bottom: var(--borderGap);
+     z-index: 1;
+     margin: 0 15px;
+ }
+
+ ._treeData {
+     min-width: 300px;
+     height: 60px;
+     line-height: 60px;
+     text-align: center;
+     border: 1px solid #333;
+     font-size: 20px;
+     background-color: #fff;
+     padding: 0 50px;
+     white-space: nowrap;
+     position: relative;
+     text-align: center;
+     margin-right: 10px;
+     z-index: 0;
+ }
+
+ ._treeData:last-child {
+     margin-right: 0;
+ }
+
+ ._NewBranch {
+     position: relative;
+     justify-content: center;
+     align-content: space-between;
+     flex-wrap: wrap;
+     text-align: center;
+ }
+
+ ._NewBranch>div {
+     flex: 1;
+ }
+
+ /* ==============  Table Cell Data  ============== */
+ .t_Data {
+     margin: 0 auto;
+     position: relative;
+     width: auto;
+     max-width: 350px;
+     min-width: 250px;
+     background-color: var(--white);
+     color: var(--green);
+     align-items: center;
+     padding: 0 10px;
+     border-radius: 5px;
+     transition: var(--transition);
+     z-index: 1;
+ }
+
+ .t_Data p {
+     flex: 1;
+     font-size: 16px;
+     text-align: center;
+ }
+
+ .t_Data:hover,
+ .t_Data.active {
+    transform: scale(1.05);
+ }
+
+
+
+ .t_Data.active {
+     background-color: var(--blue);
+     z-index: 10;
+ }
+
+ .t_Data.active ._readMore {
+     transform: rotate(0deg);
+ }
+
+ .t_Data.active .optnsCnt {
+     display: block;
+ }
+
+ .t_Data.active .optnBx {
+     margin-top: 0;
+ }
+
+ .optnsCnt {
+     position: absolute;
+     top: calc(100% + 5px);
+     left: 0;
+     width: 100%;
+     /* display: none; */
+     overflow: hidden;
+ }
+
+ .optnBx {
+     position: relative;
+     height: 65px;
+     background-color: var(--white);
+     border-radius: 5px;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+     padding: 8px 6px;
+     margin-bottom: 5px;
+     margin-top: -200px;
+     transition: var(--transition);
+ }
+
+ .optnBx::after {
+     content: "";
+     width: 1px;
+     height: 20px;
+     background-color: #333;
+     position: absolute;
+     left: calc(50% - 0.5px);
+     top: calc(50% - 10px);
+ }
+
+ .optnBx a {
+     flex: 1;
+     position: relative;
+     height: 100%;
+     margin: 2px;
+     line-height: 55px;
+     border-radius: 5px;
+     font-size: 24px;
+     text-align: right;
+     padding: 0 15px 0 10px;
+     transition: var(--transition);
+ }
+
+ .optnBx a i {
+     width: 30px;
+     font-size: 22px;
+     margin-left: 10px;
+ }
+
+ .optnBx a:hover {
+     background-color: var(--blue);
+     color: var(--white);
+ }
+
+ /* ==============  // Table Cell Data  ============== */
+
+ /* ==============  Mapping Cell/children  ============== */
+ .hasChild>._treeRaw::after,
+ .hasChildren>._treeRaw::after {
+     content: "";
+     width: 1px;
+     height: var(--borderGap);
+     position: absolute;
+     top: calc(100% - var(--borderGap));
+     left: calc(50% - 0.5px);
+     background-color: #555;
+ }
+
+ .hasChild>._treeRaw:last-child::after {
+     display: none;
+ }
+
+ .hasChildren>._NewBranch {
+     padding-top: var(--borderGap);
+ }
+
+ .hasChildren>._NewBranch>._treeRoot::before,
+ .hasChildren>._NewBranch>._treeRoot::after {
+     display: block;
+ }
+
+ ._NewBranch>._treeRoot::before,
+ ._NewBranch>._treeRoot::after {
+     display: none;
+     content: "";
+     position: absolute;
+     right: 50%;
+     width: 50%;
+     height: var(--borderGap);
+     top: calc(0% - var(--borderGap));
+     border-top: 1px solid #333;
+ }
+
+ ._NewBranch>._treeRoot::before {
+     right: 0;
+ }
+
+ ._NewBranch>._treeRoot::after {
+     left: 0;
+ }
+
+ ._NewBranch>._treeRoot:first-child::after,
+ ._NewBranch>._treeRoot:last-child::before {
+     display: none;
+ }
+
+ .hasChildren>._NewBranch>._treeRoot ._treeLeaf::after {
+     content: "";
+     width: 1px;
+     position: absolute;
+     height: var(--borderGap);
+     background-color: #333;
+     bottom: 100%;
+ }
+
+ @media (max-width:981px) {
+     .treeContainer {
+         padding: 0px;
+     }
+
+     .hasChildren>._NewBranch>._treeRoot::before,
+     .hasChildren>._NewBranch>._treeRoot::after {
+         display: none;
+     }
+
+     .hasChildren>._NewBranch>._treeRoot ._treeLeaf::after {
+         display: none;
+     }
+
+     .hasChildren>._treeRaw::after {
+         display: none;
+     }
+
+     .dd::before{
+        content: "=";
+        display: block;
+        bottom: -5rem;
+        color: red;
+        font-size: 3rem;
+        transform: rotate(90deg);
+        position: absolute;
+        left: 47%;
+     }
+
+     .cc1::before {
+         content: "1";
+         display: flex;
+         position: absolute;
+         top: 0;
+         margin: -21px;
+         background: red;
+         color: white;
+         border-radius: 50%;
+         height: 3rem;
+         width: 3rem;
+         justify-content: center;
+         align-items: center;
+         padding: 0.5rem;
+         font-weight: bold;
+     }
+
+     .cc2::before {
+         content: "2";
+         display: flex;
+         position: absolute;
+         top: 0;
+         margin: -21px;
+         background: red;
+         color: white;
+         border-radius: 50%;
+         height: 3rem;
+         width: 3rem;
+         justify-content: center;
+         align-items: center;
+         padding: 0.5rem;
+         font-weight: bold;
+     }
+
+     .cc3::before {
+         content: "3";
+         display: flex;
+         position: absolute;
+         top: 0;
+         margin: -21px;
+         background: red;
+         color: white;
+         border-radius: 50%;
+         height: 3rem;
+         width: 3rem;
+         justify-content: center;
+         align-items: center;
+         padding: 0.5rem;
+         font-weight: bold;
+     }
+
+     .dd {
+         margin-bottom: 7rem;
+     }
+
+     ._treeBranch {
+         margin-bottom: 2rem;
+     }
+
+     .hasChildren>._NewBranch,
+     ._treeLeaf {
+         padding: 0;
+     }
+ }
