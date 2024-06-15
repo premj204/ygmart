@@ -198,13 +198,11 @@
                         </p>
 
                         <table class="table table-bordered border-primary text-center">
-
                             <tbody>
                                 <tr class="table-success">
                                     <td>School</td>
                                     <td>College</td>
                                 </tr>
-
                                 <tr class="table-secondary">
                                    <td>Institute</td>
                                    <td>Classes</td>
